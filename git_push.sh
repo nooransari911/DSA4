@@ -24,7 +24,7 @@ pwd
 
 ssh -T git@github.com
 git add .
-git remote add origin https://github.com/nooransari911/DSA4.git
+# git remote add origin https://github.com/nooransari911/DSA4.git
 git remote set-url origin git@github.com:nooransari911/DSA4.git
 echo "Enter commit message:"
 read commit_message
