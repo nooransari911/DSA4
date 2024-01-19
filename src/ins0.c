@@ -26,7 +26,8 @@ int split_3 (struct btree * tr, struct elle * over) {
     
     te1 -> link [1] = over;
     over -> pare = te1;
-    
+
+    tr -> root = te1;    
     te1 -> count++;
 	} 
 

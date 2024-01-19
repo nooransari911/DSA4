@@ -43,7 +43,7 @@ struct elle * init_elle () {
   te0 -> link [M - 1] = NULL;
   te0 -> pare = NULL;
   
-  te0 -> count = -1;
+  te0 -> count = 0;
   te0 -> mark = 0;
   return te0;
 }
