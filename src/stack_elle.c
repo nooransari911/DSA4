@@ -51,6 +51,16 @@ void insert_in_stack_elle (struct stack_elle * s1, struct elle* s) {
 }
 
 
+void ins_st (struct stack_elle * s1, struct elle* s) {
+    s1 -> lastin ++;
+    s1 -> size ++;
+
+    s1 -> arr [(s1 -> lastin)] = s;
+
+    s -> mark ++;
+}
+
+
 void insert_master (struct stack_elle * qu, struct stack_elle * in, struct elle * a) {
     // inserts a into two given linears as a stack;
 
@@ -59,6 +69,38 @@ void insert_master (struct stack_elle * qu, struct stack_elle * in, struct elle 
 }
 
 
+struct elle * acc_st (struct stack_elle * s1) {
+    struct elle * s2;
+
+    if ((s1 -> lastin) > -1) {
+        s2 = (s1 -> arr [(s1 -> lastin)]);
+        s1->lastin--;
+        s1->size--;
+        return s2;
+    }
+
+    else {
+        printf ("Bad access;");
+        return (void *) ("911");
+    }
+}
+
+
+struct elle * acc_qu (struct stack_elle * s1) {
+    struct elle * s2;
+
+    if ((s1 -> firstin) >= RECORD_SIZE) {
+        s2 = (s1 -> arr [(s1 -> firstin)]);
+        s1->firstin++;
+        s1->size--;
+        return s2;
+    }
+
+    else {
+        printf ("Bad access;");
+        return (void *) ("911");
+    }
+}
 
 
 void * access_stack_elle (struct stack_elle * s1) {
@@ -107,6 +149,7 @@ void * access_queue_elle (struct stack_elle * s1) {
         return (void *) ("911");
     }
 }
+
 
 
 

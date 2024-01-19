@@ -18,7 +18,7 @@ void test0 () {
 	struct elle tra [8];
 	struct stack_elle * qu, * in;
 
-	int i = 0;
+	int i = 0, j = 0;
 
 
 	tr0 = init_btree();
@@ -28,7 +28,7 @@ void test0 () {
 
 	
 	for (; i < (M - 1); i++) {
-		re [i] = init_record();
+		re [i] = init_record ();
 		re [i] -> key = i + 1;
 	}
 
@@ -51,10 +51,11 @@ void test0 () {
 	
 	//part2
 	printf ("\n\n//Part2:\n");
-
-	for (i = (M - 1); i < (2 * (M - 1)); i++) {
-		re1 [i % (M - 1)] = init_record();
-		re1 [i % (M - 1)] -> key = i + 1;
+    j = 15;
+	for (i = 0; i < (M - 1); i++) {
+		re1 [i] = init_record();
+		re1 [i] -> key = j + 1;
+        j ++;
 	}
 
 
@@ -71,15 +72,26 @@ void test0 () {
 	
 	printf ("\n\n");
 
-	printf ("\n\n//Child ::\n");
+	printf ("\n\n//0 Child ::\n");
 	
-	for (i = 0; i < tr0 -> root -> link [(M - 1)] -> count; i++) {
-		printf ("ch%d\t", tr0 -> root -> link [(M - 1)] -> data [i] -> key);
+	for (i = 0; i < tr0 -> root -> link [0] -> count; i++) {
+		printf ("ch%d\t", tr0 -> root -> link [0] -> data [i] -> key);
 	}
 
+    printf ("\n\n//1 Child ::\n");
+
+    for (i = 0; i < tr0 -> root -> link [1] -> count; i++) {
+        printf ("ch%d\t", tr0 -> root -> link [1] -> data [i] -> key);
+    }
+
+    printf ("\n\n//2 Child ::\n");
+
+    for (i = 0; i < tr0 -> root -> link [2] -> count; i++) {
+        printf ("ch%d\t", tr0 -> root -> link [2] -> data [i] -> key);
+    }
 	
-	BFS_iterative(tr0, qu, in);
-	printall (in);
+	//BFS_iterative(tr0, qu, in);
+	//printall (in);
 
 	// printf ("\n\nPrint one: root;");
 	// print_one_elle (tr0 -> root);

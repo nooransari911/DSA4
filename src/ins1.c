@@ -4,7 +4,8 @@
 void insert (struct btree * tr, struct record * data) {
 	
 	struct elle * te0, * te1, * te2, * te3;
-	int i = 0, j = 0, k, flag0 = 0;
+	int i = 0, j = 0, k;
+    volatile int flag0 = 0;
 	int pos = 0;
 	struct stack_elle * s1;
 	
@@ -27,7 +28,7 @@ void insert (struct btree * tr, struct record * data) {
 	te3 = search_3 (tr, data -> key);
 
 	
-	// printf ("\nKey: %d; ", data -> key);
+	printf ("\nKey: %d; ", data -> key);
 
 	// printf ("Target: %d; Count: %d", te3 -> data [0] -> key, te3 -> count);
 
@@ -57,26 +58,24 @@ void insert (struct btree * tr, struct record * data) {
 		//overflow
 		printf ("\noverflow");
 		//build stack of full elles from te3 -> root;
+        te0 = te3;
 		while (te0 != NULL) {
 			if (te0 -> count == M - 1) {
-				insert_in_stack_elle (s1, te0);
+				ins_st (s1, te0);
 			}
 
 			te0 = te0 -> pare;
 		}
+
+
 		//apply split on all elles in stack;
 		while (s1 -> lastin > -1) {
-			flag0 = split_3 (tr, access_stack_elle(s1));
-		}
-		//insert as needed
-		te3 = te3 -> pare;
-		if (flag0 > k) {
-			te3 = te3 -> link [flag0];
-		}
-		else {
-			te3 = te3 -> link [flag0 + 1];
+			flag0 = split_3 (tr, acc_st(s1));
 		}
 
+
+		//insert as needed
+		te3 = search_3 (tr, k);
 		pos = where (te3, k);
 		ins_non_ov_3 (te3, data, pos);
 	}

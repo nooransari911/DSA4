@@ -16,7 +16,7 @@ echo ""
 
 cd ..
 pwd
-# rm vg*
+rm vg*
 
 # exec ssh-agent bash
 # ssh-add ~/.ssh/github_key_1

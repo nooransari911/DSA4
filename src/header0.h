@@ -6,9 +6,10 @@
 #include <time.h>
 
 
-#define M 15
+#define M 16
 //M-way BTree;
 //M links; M - 1 records;
+#define ME ((M -2) / 2)
 
 #define RECORD_SIZE 20
 
@@ -22,7 +23,7 @@ typedef struct record {
 
 typedef struct elle {
   struct record * data [M - 1];
-  struct elle * link [M + 1];
+  struct elle * link [M];
   int count;
   int mark;
 
@@ -52,8 +53,12 @@ void test0 ();
 //stack_elle.c declartions;
 struct stack_elle * init_stack_elle ();
 void insert_in_stack_elle (struct stack_elle * s1, struct elle* s);
+void ins_st (struct stack_elle * s1, struct elle* s);
 void insert_master (struct stack_elle * qu,
                     struct stack_elle * in, struct elle * a);
+struct elle * acc_st (struct stack_elle * s1);
+struct elle * acc_qu (struct stack_elle * s1);
+
 void * access_stack_elle (struct stack_elle * s1);
 void * access_queue_elle (struct stack_elle * s1);
 int searchinlinear (struct stack_elle * in, int

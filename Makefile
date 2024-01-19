@@ -1,5 +1,5 @@
 CC=gcc
-OPT=-O0
+OPT=O0
 CFLAGS=-g -march=native -I src
 INC=-I /home/ansarimn/Downloads/testing/
 
@@ -73,6 +73,10 @@ test: $(BINtest)
 
 $(BINtest): $(OBJtest)
 	$(CC) $(CFLAGS) $(OBJStest) -o $@
+
+run: hello
+hello:
+	$(BIN1)
 
 
 

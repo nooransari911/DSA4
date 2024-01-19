@@ -1,0 +1,9 @@
+[[language]]
+name = "c"
+auto-format = false
+file-types = ["c", "h"]
+language-servers = ["clangd"]
+
+
+[language-server.clangd]
+command = "clangd"
