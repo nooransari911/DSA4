@@ -97,6 +97,7 @@ void ins_non_ov_3 (struct elle * te3, struct record * data, int at) {
 
 	while (j > at) {
 		te3 -> data [j] = te3 -> data [j - 1];
+		te3 -> link [j + 1] = te3 -> link [j];
 		j --;
 	}
 

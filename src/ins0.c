@@ -29,16 +29,29 @@ int split_3(struct btree *tr, struct elle *over) {
     }
 
     else {
-        ins = over->pare->count;
-        over->pare->data[ins] = over->data[i];
-        over->pare->count++;
+        ins = where (over->pare, over->data[ME]->key);
+
+        ins_non_ov_3(over->pare, over->data[ME], ins);
+        //over->pare->count++;
 
         over->pare->link[ins + 1] = over->pare->link[ins];
         over->pare->link[ins] = te0;
         te0->pare = over;
     }
 
-    //inline mv_elle
+    // else {
+    //         ins = over->pare->count;
+    //         over->pare->data[ins] = over->data[i];
+    //         over->pare->count++;
+
+    //         over->pare->link[ins + 1] = over->pare->link[ins];
+    //         over->pare->link[ins] = te0;
+    //         te0->pare = over;
+    //  }   
+    
+    
+     //inline mv_elle
+
     j = 0;
     for (i = 0; i < ME; i++) {
         te0->data[j] = over->data[i];
