@@ -90,8 +90,8 @@ AX+ Sharer :: https://drive.google.com/drive/folders/1Cyn3PxG3EZq__XGyJaN1WVQ7MB
 
 
 ## RF
-(ESP32 Walkie talkie)[https://github.com/atomic14/esp32-walkie-talkie]
-(Arduino Based Walkie Talkie using nRF24L01)[https://circuitdigest.com/microcontroller-projects/arduino-walkie-talkie-using-nrf24l01]
+- (ESP32 Walkie talkie)[https://github.com/atomic14/esp32-walkie-talkie]
+- (Arduino Based Walkie Talkie using nRF24L01)[https://circuitdigest.com/microcontroller-projects/arduino-walkie-talkie-using-nrf24l01]
 
 
 
