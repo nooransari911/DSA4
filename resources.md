@@ -79,7 +79,6 @@
 - HTML CSS
 [x ] Mycodeschool
 - DSA
-Sam Ben-Yaakov
 Electronics subjectified
 Prof Fiore
 Great Scott
@@ -89,17 +88,6 @@ www.39k.ca
 PYQs :: https://drive.google.com/drive/folders/1JOJ1OCQ01azp0yP2KQcjUg3RqcxylR01
 AX+ Sharer :: https://drive.google.com/drive/folders/1Cyn3PxG3EZq__XGyJaN1WVQ7MBnAYIuC
 
-
-## RF
-- (ESP32 Walkie talkie)[https://github.com/atomic14/esp32-walkie-talkie]
-- (Arduino Based Walkie Talkie using nRF24L01)[https://circuitdigest.com/microcontroller-projects/arduino-walkie-talkie-using-nrf24l01]
-- (Make a 1.5 K.M Range walkie talkie)[https://www.youtube.com/watch?v=ms9jkr-C0FQ]
-
-
-## Power supply
-- TI PMP 8740: 2kW 62A 32V
-- TI PMP 21842: 500W 42A 12V
-- IQDH29NE2LM5
 
 
 ## Misc
