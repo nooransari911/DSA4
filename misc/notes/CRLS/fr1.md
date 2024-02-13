@@ -1,3 +1,4 @@
+
 # Chapter 1
 ## The Role of ALogrithms in Computing
 
@@ -80,3 +81,80 @@ In some particular cases, we’ll be interested in the average-case running time
 Henceforth, we are interested only in *order of growth*. First we ignored exact statement cost. Then we dropped abstract running costs with constants a, b, c.
 
 Now we consider only the highest-order term and drop the remaining terms. We also drop the constants. Then worst-case running time for insertion sort becomes n^2.
+
+
+Algorithm with order of growth n^3 will take more time than algorithm with order of growth n^2 for sufficiently large valeus of n.
+
+
+To highlight order of growth, we use theta notation Θ (n). Insertion sort has a worst-case running time of order Θ (n^2).
+
+
+
+
+*Designing* algorithms. Algorithms can be *incremental* or *divide-and-conquer*.
+
+In incremental method, we progressively solve smaller parts of problem. In divide-and-conquer, we break the problem into a similar problem at smaller size, solve the subproblems recursively, and then combine these solutions to create a solution to the original problem.
+
+In the divide-and-conquer method::
+1. if the problem is small enough--called the base case--you just solve it directly without recursing
+2. otherwise--called the recursive case--you perform three characteristic steps:
+		Divide the problem into one or more subproblems that are smaller instances of the same problem.
+		Conquer the subproblems by solving them recursively.
+		Combine the subproblem solutions to form a solution to the original problem.
+
+
+Incremental: Insertion sort
+	For each element in A[i], insert it into its proper place in A[1:i] having already sorted A[1:i-1].
+
+Divide-and-conquer: Merge sort
+- **Divide**: Divide the subarray A[p:r] to be sorted into two adjacent subarrays, each of half the size.
+		To do so, compute the midpoint q of A[p:r] by taking the average of p and r, and divide A[p:r] into subarrays A[p:q] and A[q+1:r]
+- **Conquer**: Conquer by sorting each of the two subarrays A[p:q] and A[q+1:r] recursively using merge sort.
+- **Combine**: Combine by merging the two sorted subarrays A[p:q] and A[q+1:r] back into A[p:r] producing the sorted answer.
+
+
+Analyzing merge part:
+The for loops cumulatively take (n\*C1) time as the entire array A[p:r] is copied into L or R arrays. The while loops cumulatively take (n\*C2) time as the three while loops cumulatively copy all n elements in L and R arrays into A array.
+
+Thus, the for loops collectively have a worst-case running time of Θ (n). The three while loops collectively also have a worst-case running time of Θ (n).
+
+
+Analyzing merge-sort part:
+Merge-sort recursively calls itself till A has zero or one elements in it. Then it calls merge to merge the elements
+
+
+Analyzing merge-sort algorithm ::
+Let the worst-case running time of merge-sort algorithm be T (n).
+
+Merge-sort is constant-time for small enough n, say n<=n0.
+
+For other values of n, suppose the problem is divided into a parts each of size (n/b) with every division. Time to solve a problems each of size (n/b) is (a\*T (n/b)).
+
+Suppose division takes D (n) time and combining takes C (n) time. Then T (n) becomes
+
+T (n) = --|-- Θ (1), n<=n0,
+		  |-- D (n) + C (n) + (a\*T (n/b)) otherwise.
+
+
+- Divide:
+	As divide step is just computing middle of array, it is constant-time, i.e., D (n) = Θ (1)
+
+- Conquer:
+	Problem is divided into 2 problems each of size (n/2). Thus a=2, b=2 and conquer time is (2\*T (n/2))
+
+- Combine:
+	Combine is merge part of algorithm. Merge is Θ (n) as previously shown.
+
+
+Thus T (n) becomes ::
+
+T (n) = --|-- Θ (1), n<=n0,
+		  |-- θ(1) + θ (n) + (2\*T (n/2)) otherwise.
+
+i.e.,
+T (n) = --|-- Θ (1), n=1,
+		  |-- θ (n) + (2\*T (n/2)) otherwise.
+dropping Θ (1).
+
+
+Thus T (n) = Θ (n\*log (n))
