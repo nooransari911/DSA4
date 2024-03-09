@@ -1,0 +1,3 @@
+- `malloc (int n)` returns a void pointer to a block of memory of `n` bytes
+- `calloc (int size, int number)` returns a void pointer to a block of memory of `number * size` bytes; so it is same as malloc. `calloc ()` also sets all values in block to zero.
+- `realloc (void * pointer, int new_size)` resize block of memory to `new_size`; it may be necessary to move the block somewhere else in memory to resize;

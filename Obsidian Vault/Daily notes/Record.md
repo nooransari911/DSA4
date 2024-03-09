@@ -1,0 +1,14 @@
+- [[$$2023-10-15]] :: Procrastination, failure, success
+- [[2023-11-15]] :: Study less, achieve more; note-taking
+- [[2023-11-22]] :: Haskell; increase your intelligence; Ali
+- [[2023-11-24]] :: Golang; r/hardware comments; StackOverflow Developer Survey 2021, 2023;
+- [[2023-11-25]] :: Binary search tree, heap, priority queue on StackOverFlow
+- [[2023-11-27]] :: Golang; Primeagen
+- [[2023-11-28]] :: Pseudo-red-pill
+- [[2023-12-02]] :: *Apache Cassandra*
+- [[2023-12-03]] :: *Cassandra*, NoSQL on reddit
+- [[2023-12-05]] :: The Rational Male; Sadia Psycho; Better Call George;
+- [[2023-12-19]] :: Primeagen editor
+- [[2024-01-04]] :: Primeagen, ali advice
+- [[2024-01-05]] :: Primeagen Leetcode
+- [[2024-01-06]] :: Procrastination

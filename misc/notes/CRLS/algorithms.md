@@ -92,3 +92,40 @@ Merge-sort (A,q+1,r)
 //Merge A[p:q] and A[q+1:r] into A[p:r]
 Merge (A,p,q,r)
 ```
+
+
+
+# 3
+## Matrix Multiplication
+
+MATRIX_MULTIPLY (A, B, C, n)
+	for i = 1 to n
+		for j = 1 to n
+			for k = 1 to n
+				cij = (cij + (aik * bkj))
+
+
+
+
+# 4
+## Matrix Multiplication Divide and Conquer
+
+MATRIX_MULTIPLY_DAC (A, B, C, n)
+	if n==1 // base case
+		c11=c11+(a11*b11)
+		return
+	partition A, B, and C into 4 (n/2\*n/2) matrices:
+		A11, A12, A21, A22;
+		B11, B12, B21, B22;
+		C11, C12, C21, C22;
+		
+
+MATRIX_MULTIPLY_DAC (A11, B11, C11, n/2)
+MATRIX_MULTIPLY_DAC (A11, B12, C12, n/2)
+MATRIX_MULTIPLY_DAC (A21, B11, C21, n/2)
+MATRIX_MULTIPLY_DAC (A21, B12, C22, n/2)
+
+MATRIX_MULTIPLY_DAC (A12, B21, C11, n/2)
+MATRIX_MULTIPLY_DAC (A12, B22, C12, n/2)
+MATRIX_MULTIPLY_DAC (A22, B21, C21, n/2)
+MATRIX_MULTIPLY_DAC (A22, B22, C22, n/2)

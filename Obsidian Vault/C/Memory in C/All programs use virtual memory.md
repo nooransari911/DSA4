@@ -1,0 +1,1 @@
+Addresses that programs/processes see is mapped to physical memory. So `0x400A` of one process is not the same as `0x400A` of another process.

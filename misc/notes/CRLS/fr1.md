@@ -89,7 +89,7 @@ Algorithm with order of growth n^3 will take more time than algorithm with order
 To highlight order of growth, we use theta notation Θ (n). Insertion sort has a worst-case running time of order Θ (n^2).
 
 
-
+## Divide-and-conquer
 
 *Designing* algorithms. Algorithms can be *incremental* or *divide-and-conquer*.
 
@@ -113,6 +113,7 @@ Divide-and-conquer: Merge sort
 - **Combine**: Combine by merging the two sorted subarrays A[p:q] and A[q+1:r] back into A[p:r] producing the sorted answer.
 
 
+## Merge-sort
 Analyzing merge part:
 The for loops cumulatively take (n\*C1) time as the entire array A[p:r] is copied into L or R arrays. The while loops cumulatively take (n\*C2) time as the three while loops cumulatively copy all n elements in L and R arrays into A array.
 
@@ -158,3 +159,184 @@ dropping Θ (1).
 
 
 Thus T (n) = Θ (n\*log (n))
+
+
+
+# Chapter 3
+## Asymptotic behaviour
+
+When we look at input sizes large enough to make relevant only the order of growth of the running time, we are studying the *asymptotic efficiency* of algorithms.
+
+
+## O-notation
+O-notation characterizes an *upper bound* on the asymptotic behavior of a function. O-notation means that function grows *no faster than* a certain rate. So O(n^3), O(n^4) and O(n^6) can simultaneously be valid O-notations for some function.
+
+
+## Ω-notation
+Ω-notation characterizes an *lower bound* on the asymptotic behavior of a function. Ω-notation means that function grows *no slower than* a certain rate. So Ω(n^1), Ω(n^2) and Ω(n^6) can simultaneously be valid Ω-notations for some function.
+
+
+## Θ-notation
+Θ-notation characterizes an *precise bound* on the asymptotic behavior of a function. Θ-notation means that function grows *precisely* at a certain rate. So *only one* among Θ(n^1), Θ(n^2) and Θ(n^6) can be valid Θ-notation for some function.
+
+
+## Mathematical definitions
+## O-notation
+O(g(n)) = {f(n): there exists positive constants c and n0 such that 0<=f(n)<=cg(n) for all n>=n0}
+
+## Ω-notation
+Ω(g(n)) = {f(n): there exists positive constants c and n0 such that 0<=cg(n)<=f(n) for all n>=n0}
+
+## Θ-notation
+Θ(g(n)) = {f(n): there exists positive constants c1, c2 and n0 such that 0<=c1g(n)<=f(n)<=c2g(n) for all n>=n0}
+
+
+## Abuse of notation
+While asymptotics are defined as a set, we will use f(n)=O(g(n)) to mean f(n)<euro>O(g(n)), i.e., f(n) is a member of the set O(g(n)).
+
+O(g(n)) in any mathematical expression means an anonymous function that is a member of set O(g(n)). 
+
+Θ(n) in
+T(n) = 2T(n/2) + Θ(n)
+is an anonymous function that is a member of set Θ(n).
+
+
+## Monotonicity
+- Monotonically increasing:
+	if n>=m implies f(n)>=f(m)
+
+- Monotonically decreasing:
+	if n<=m implies f(n)<=f(m)
+
+- Strictly increasing:
+	if n>m implies f(n)>f(m)
+
+- Strictly decreasing:
+	if n<m implies f(n)<f(m)
+
+
+- Floor floor (x):
+	greatest integer less than or equal to x
+	
+- Ceiling ceiling (x):
+	smallest integer greater than or equal to x
+
+
+## Modular arithmetic
+Value of a mod n is value of remainder when a is divided by n.
+
+a mod n = [a - (n * floor (a/n))]
+
+a mod n = b mod is written as a = b (mod n).
+
+
+
+
+# Chapter 4
+## Divide and conquer
+If the problem is small enough--the base case--you just solve it directly without recursing. Otherwise--the recursive case--you perform three characteristic steps ::
+
+- Divide the problem into one or more subproblems that are smaller instances of the same problem.
+- Conquer the subproblems by solving them recursively.
+- Combine the subproblem solutions to form a solution to the original problem.
+
+
+A *recurrence* is an equation that describes a function in terms of its value on other, typically smaller, arguments. Recurrence relations are a natural way to characterize the running times of recursive algorithms mathematically.
+
+A recurrence is *algorithmic* if ::
+- For all n<n0, T(n) = Θ(1)
+- For all n>=n0, every path of recursion terminates in a defined base case within a finite number of recursive invocations.
+
+
+## Matrix Multiplication
+Matrix multiplication of two (nxn) matrices A(aik) and B(bjk) is a (nxn) matrix C=(cij). (cij) is defined as
+(cij) = [Σk=1:n] (aik*bkj)
+
+Algorithm 3 is C = (C + (A * B)) using straightforward approach.
+
+Divide and Conquer approach ::
+Divide all matrices A, B, C into four matrices.
+
+A = |A11 A12|
+	|A21 A22|
+
+B = |B11 B12|
+	|B21 B22|
+
+C = |C11 C12|
+	|C21 C22|
+
+
+C=A\*B becomes
+
+|C11 C12| = |A11  A12| * |B11  B12|
+|C21 C22|   |A21  A22|   |B21  B22|
+
+|C11 C12| = |A11\*B11+A12\*B21  A11\*B12+A12\*B22|
+|C21 C22|   |A21\*B11+A22\*B21  A21\*B12+A22\*B22|
+
+
+C11 = A11\*B11 + A12\*B21
+C12 = A11\*B12 + A12\*B22
+C21 = A21\*B11 + A22\*B21
+C11 = A21\*B12 + A22\*B22
+
+
+Algorithm 4 is C = (A * B) using divide and conquer approach.
+As each recursive call is of size n/2 and there are 8 recursive calls, running time for recursive case is (8\*T(n/2)). Base case is constant time.
+
+Thus running time becomes
+T(n) = (8\*T(n/2)) + Θ(1)
+
+This is Θ(n^3).
+
+
+Strassen algorithm has fewer matrix multiplies and has better running time O(n^log7)
+
+
+## Solving recurrences by substitution
+- Guess the form of the solution using symbolic constants
+- Use mathematical induction to show that the solution works, and ûnd the con-
+stants
+
+
+Example
+T(n) = 2T(n/2) + Θ(n)
+Guess: T(n) = O(nlogn)
+
+Inductive hypothesis:
+T(n) <= cnlogn for all n >= n0
+
+By induction hypothesis,
+T(n/2) <= c(n/2)log(n/2) for all (n/2) >= n0
+
+T(n) becomes
+T(n) <= 2c(n/2)log(n/2) + Θ(n)
+	  = cnlog(n/2) + Θ(n)
+	  = cnlog(n) - cnlog(2) + Θ(n)
+	  = cnlog(n) - cn + Θ(n)
+	 <= cnlog(n)
+if c is large enough that for all n >= n0, cn dominates Θ(n).
+
+
+Good guesses need experience. Similar recurrence relations have similar running time is a reasonable strategy.
+
+Sometimes you may need to have a lower-order term in induction hypothesis.
+
+Example:
+T(n) <= cn - d instead of T(n) <= cn
+
+
+Asymptotic notations hide constants. So they should be used for induction proofs.
+
+Induction hypothesis must actually be proven.
+
+Example:
+T(n) = 2T(n/2) + Θ(n)
+Suppose T(n) <= cn
+Then, T(n) <= cn + Θ(n)
+Here, it needs to be proven that T(n) <= cn and consequently T(n) = O(n). You cannot directly conclude that T(n) = O(n).
+
+
+Recursiontrees, master recurrences, master theorem, Akra-Bazzi recurrences
+
