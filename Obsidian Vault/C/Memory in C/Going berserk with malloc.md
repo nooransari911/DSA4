@@ -1,1 +1,0 @@
-When process requests memory from OS, it *actually* gets memory only when it tries to access it. So if process only requests memory but does not access it, then process does not *actually* have memory.
